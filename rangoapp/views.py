@@ -5,4 +5,5 @@ def index(request):
   template_var = {'boldmessage':'AHHHHHHHH'}
   return render(request, 'rangoapp/index.html', template_var)
 def about(request):
-  return HttpResponse("<a href='/rangoapp'>Index</a>")
+  about_vars = {'boldmessage': 'AHHHHHH'}
+  return render(request, 'rangoapp/about.html', about_vars)
