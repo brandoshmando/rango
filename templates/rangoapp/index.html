@@ -9,16 +9,28 @@
   <body>
      <body>
         <h1>Rango says...Hello World!</h1>
-        <a href="{% url 'about'">About</a>
+        <a href="{% url 'about'">About</a><br>
+        <hr>
+        <strong>Top Categories</strong>
         {% if categories %}
           <ul>
             {% for category in categories %}
-            <li> {{category.name }} </li>
+            <li><a href="/rangoapp/category/{{ category.slug }}">{{category.name }}</a></li>
             {% endfor %}
           </ul>
         {% else %}
-          <strong>There are currently no categories</strong>
+          <strong>Currently no top categories...</strong>
         {% endif %}
+        <strong>Top Pages</strong>
+        {% if pages %}
+          <ul>
+            {% for page in pages %}
+              <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <strong>Currently no top pages</strong>
+        {% endif%}
       </body>
   </body>
 </html>
