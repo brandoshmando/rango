@@ -50,6 +50,18 @@ def add_category(request):
 
   return render(request, 'rangoapp/add_category.html', {'form':form})
 
+def add_page(request):
+  if request.method == 'POST':
+    form = PageForm(request.POST)
+    if form.is_valid():
+      form.save(commit=True)
+      return index(request)
+    else:
+      print form.errors
+    else:
+      form = PageForm()
+
+  return render(request, 'rangoapp/add_page.html', {'form':form})
 
 
 
