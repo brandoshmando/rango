@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rangoapp.models import Category, Page
 from rangoapp.forms import CategoryForm, PageForm
+from IPython import embed
 
 def index(request):
   top_data = {}
@@ -36,11 +37,12 @@ def category(request, category_name_slug):
   return render(request, 'rangoapp/category.html', category_data)
 
 def add_category(request):
-  if request == 'POST':
+  if request.method == 'POST':
     form = CategoryForm(request.POST)
-
     if form.is_valid():
       form.save(commit=True)
+      return index(request)
+
     else:
       print form.errors
   else:
