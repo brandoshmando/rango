@@ -1,5 +1,6 @@
 from django import forms
-from rangoapp.models import Page, Category
+from django.contrib.auth.models import User
+from rangoapp.models import Page, Category, UserProfile
 
 class CategoryForm(forms.ModelForm):
   name = forms.CharField(max_length=128, help_text="Enter the category name:")
@@ -30,3 +31,20 @@ class PageForm(forms.ModelForm):
       cleaned_data['url'] = url
 
     return cleaned_data
+
+class UserForm(forms.ModelForm):
+  username = forms.CharField(help_text="Enter the desired username:", max_length=50)
+  email = forms.EmailField(help_text="Enter your email:")
+  password = forms.CharField(widget=forms.PasswordInput())
+
+  class Meta:
+    model = User
+    fields = ('username', 'email', 'password',)
+
+class UserProfileForm(forms.ModelForm):
+  website = forms.URLField(max_length=200, help_text="Add your website(optional):", require=False)
+  picture = forms.ImageField(help_text="Upload a profile image:"require=False)
+
+  class Meta:
+    model = UserProfile
+    fields = ('website', 'picture',)

@@ -95,6 +95,5 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
-
 MEDIA_URL = '/media/'
 MEDIA_PATH = os.path.join(BASE_DIR, 'media')

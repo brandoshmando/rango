@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rangoapp.models import Category, Page
-from rangoapp.forms import CategoryForm, PageForm
+from django.contrib.auth.models import User
+from rangoapp.models import Category, Page, UserProfile
+from rangoapp.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from IPython import embed
 
 def index(request):
