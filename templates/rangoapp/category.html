@@ -7,9 +7,9 @@
   <body>
     <h1>{{ category_name }}</h1>
     <a href="{% url 'index' %}">Home</a> |
-    <a href="add_page/">Add Page</a>
-    <hr>
     {% if category %}
+      <a href="add_page/">Add Page</a>
+      <hr>
       {% if pages %}
         <ul>
           {% for page in pages %}
