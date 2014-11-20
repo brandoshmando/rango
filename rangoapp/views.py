@@ -116,10 +116,10 @@ def user_login(request):
         login(request, user)
         return HttpResponseRedirect('/rangoapp/')
       else:
-        HttpResponse("Your account has been disabled...")
+       return HttpResponse("Your account has been disabled...")
     else:
       print "Invalid credentials {0} {1}".format(username, password)
-      HttpResponse("Invalid login credentials supplied...")
+      return HttpResponse("Invalid login credentials supplied...")
   else:
     return render(request, 'rangoapp/login.html', {})
 
