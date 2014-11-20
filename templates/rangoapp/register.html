@@ -7,7 +7,7 @@
   <body>
     {% if registered %}
       <p>Rango Says: Thanks for regsitering with us!</p>
-      <a href="rangoapp/">Return to Homepage</a>
+      <a href="{% url 'index' %}">Return to Homepage</a>
     {% else %}
       <p>Rango Says:<strong>Register here!</strong></p>
 
