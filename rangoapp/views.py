@@ -17,25 +17,26 @@ def index(request):
   pages = Page.objects.order_by('-views')[:5]
   top_data['pages'] = pages
 
-  visits = int(request.COOKIES.get('visits', '1'))
-  reset_last_visit_time = False
+  visits = request.session.get('visits')
+  if not visits:
+    visits = 0
 
-  if 'last_visit' in request.COOKIES:
-    last_visit = request.COOKIES['last_visit']
+  reset_last_visit_time = False
+  last_visit = request.session.get('last_visit')
+  if last_visit:
     last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
 
     if (datetime.now() - last_visit_time).days > 0:
-      visits = visits + 1
+      visits += 1
       reset_last_visit_time = True
   else:
     reset_last_visit_time = True
 
-  response = render(request, 'rangoapp/index.html', top_data )
+  request.session['visits'] = visits
   if reset_last_visit_time:
-    response.set_cookie('last_visit', datetime.now())
-    response.set_cookie('visits', visits)
+    request.session['last_visit'] = str(datetime.now())
 
-  return response
+  return render(request, 'rangoapp/index.html', top_data)
 
 def about(request):
   about_vars = {'boldmessage': 'AHHHHHH'}
