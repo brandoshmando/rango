@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Welcome to Rango</title>
-  </head>
-  <body>
-    <h1>Log in!</h1>
-    <i>Not registered yet? <a href="{% url 'register'%}">Sign up!</a> or <a href="{% url 'index' %}">Go Home!!</a></i>
-    <form id="login" action="{% url 'login' %}" method="post">
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Login! {% endblock %}
+
+{% block body_block %}
+  <h1>Log in!</h1>
+  <form id="login" action="{% url 'login' %}" method="post">
     {% csrf_token %}
     <label for="username">Username:</label>
     <input type="text" name="username" size="50" />
     <label for="password">Password:</label>
     <input type="password" name="password" size="50" />
     <input type="submit", name="submit" vlaue="Login" />
-    </form>
-  </body>
-</html>
+  </form>
+  <i>Not registered yet? <a href="{% url 'register'%}">Sign up!</a> or <a href="{% url 'index' %}">Go Home!!</a></i>
+{% endblock %}
