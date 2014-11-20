@@ -1,13 +1,11 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
 {% load staticfiles %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tango with Rango</title>
-</head>
-<body>
+
+{% block title %} About {% endblock %}
+
+{% body_block %}
   <p>This is the about page...</p>
   <strong>{{ boldmessage }}</strong>
   <img src="{% static 'imgres.jpg'">
-</body>
-</html>
+{% endblock %}
