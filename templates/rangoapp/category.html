@@ -8,9 +8,9 @@
   <h2>{{ category_name }}</h2>
   {% if category %}
     {% if user.is_authenticated %}
-      |<a href="add_page/">Add Page</a>
+      <small><a href="add_page/">Add Page</a></small>
     {% endif %}
-    <hr>
+
     {% if pages %}
       <ul>
         {% for page in pages %}
