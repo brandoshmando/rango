@@ -6,9 +6,11 @@
   </head>
   <body>
     <h1>{{ category_name }}</h1>
-    <a href="{% url 'index' %}">Home</a> |
+    <a href="{% url 'index' %}">Home</a>
     {% if category %}
-      <a href="add_page/">Add Page</a>
+      {% if user.is_authenticated %}
+        |<a href="add_page/">Add Page</a>
+      {% endif %}
       <hr>
       {% if pages %}
         <ul>

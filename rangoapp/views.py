@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from rangoapp.models import Category, Page, UserProfile
 from rangoapp.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from IPython import embed
@@ -123,6 +123,10 @@ def user_login(request):
       return HttpResponse("Invalid login credentials supplied...")
   else:
     return render(request, 'rangoapp/login.html', {})
+@login_required
+def user_logout(request):
+  logout(request)
+  return HttpResponseRedirect("/rangoapp/")
 
 
 
