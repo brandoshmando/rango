@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from rangoapp.models import Category, Page, UserProfile
@@ -37,7 +38,7 @@ def category(request, category_name_slug):
     pass
 
   return render(request, 'rangoapp/category.html', category_data)
-
+@login_required
 def add_category(request):
   if request.method == 'POST':
     form = CategoryForm(request.POST)
@@ -51,7 +52,7 @@ def add_category(request):
     form = CategoryForm()
 
   return render(request, 'rangoapp/add_category.html', {'form':form})
-
+@login_required
 def add_page(request, category_name_slug):
   try:
     cat = Category.objects.get(slug=category_name_slug)

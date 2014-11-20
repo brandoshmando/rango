@@ -97,3 +97,5 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_PATH = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = "/rangoapp/login/"
