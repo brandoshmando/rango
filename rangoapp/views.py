@@ -75,33 +75,33 @@ def add_page(request, category_name_slug):
   data = {'form': form, 'category': cat}
   return render(request, 'rangoapp/add_page.html', data)
 
-  def register(request):
-    registered = False
+def register(request):
+  registered = False
 
-    if request.method == 'POST':
-      user_form = UserForm(request.POST)
-      profile_form = UserProfileForm(request.POST)
+  if request.method == 'POST':
+    user_form = UserForm(request.POST)
+    profile_form = UserProfileForm(request.POST)
 
-      if user_form.is_valid() and profile_form.is_valid():
-        user = user_form.save(commit=False)
+    if user_form.is_valid() and profile_form.is_valid():
+      user = user_form.save(commit=False)
 
-        user.set_password(user.password)
-        user.save()
+      user.set_password(user.password)
+      user.save()
 
-        profile = profile_form.save(commit=False)
-        profile.user = user
+      profile = profile_form.save(commit=False)
+      profile.user = user
 
-        if 'picture' in request.FILES:
-          profile.picture = request.FILES['picture']
+      if 'picture' in request.FILES:
+        profile.picture = request.FILES['picture']
 
-        profile.save()
-        registered = True
-      else:
-        print user_form.errors, profile_form.errors
+      profile.save()
+      registered = True
     else:
-      user_form = UserForm()
-      profile_form = UserProfileForm()
-    return render(request, 'rangoapp/register.html', {'user_form': user_form, 'profile_form': UserProfileForm, 'registered': registered})
+      print user_form.errors, profile_form.errors
+  else:
+    user_form = UserForm()
+    profile_form = UserProfileForm()
+  return render(request, 'rangoapp/register.html', {'user_form': user_form, 'profile_form': UserProfileForm, 'registered': registered})
 
 
 
