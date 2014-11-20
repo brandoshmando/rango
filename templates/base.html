@@ -6,20 +6,20 @@
   </head>
   <body>
     <div>
-      {% block body_block %}{% endblock %}
+      {% if user.is_authenticated %}
+        <h1>Rango says...{{ user.username }}!</h1>
+        <a href="{% url 'logout' %}">Logout</a>|
+        <a href="{% url 'add_category' %}">Add Category</a>|
+      {% else %}
+        <h1>Rango says...Hello World!</h1>
+        <a href="{% url 'login' %}">Login!</a>|
+        <a href="{% url 'register' %}"> Register </a>|
+      {% endif %}
+      <a href="{% url 'about' %}">About</a> |
+      <hr>
     </div>
-    <hr>
     <div>
-      <ul>
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'logout' %}">Logout</a></li>|
-          <li><a href="{% url 'add_category'%}">Add Category</a></li>|
-        {% else %}
-          <li><a href="{% url 'login' %">Login</a></li>|
-          <li><a href="{% url 'register %}">Sign Up</a></li>|
-        {% endif %}
-        <li><a href="{% url 'about' %}">About</a></li>
-      </ul>
+      {% block body_block %}{% endblock %}
     </div>
   </body>
 </html>
