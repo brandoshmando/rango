@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rangoapp/', include('rangoapp.urls')),
+    url(r'^accounts/', include('registration.backend.simple.urls')),
 )
 
 if settings.DEBUG:
