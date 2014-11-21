@@ -1,7 +1,11 @@
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
 from django.conf import settings
+from registration.backends.simple.views import RegistrationView
 
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self,request,user):
+        return '/rango/'
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'rango.views.home', name='home'),
@@ -9,7 +13,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rangoapp/', include('rangoapp.urls')),
-    url(r'^accounts/', include('registration.backend.simple.urls')),
+    url(r'^accounts/registration/$', MyRegistrationView.as_view(), name="registration_register"),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 )
 
 if settings.DEBUG:
