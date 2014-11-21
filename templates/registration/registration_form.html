@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body_blcok %}
+  <h1>Create an Acount!</h1>
+  <form action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Create Account" />
+  </form>
+{% endblock %}
