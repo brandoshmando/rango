@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'rangoapp',
     'IPython',
     'django_extensions',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,3 +100,8 @@ MEDIA_URL = '/media/'
 MEDIA_PATH = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = "/rangoapp/login/"
+
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+LOGIN_REDIRECT_URL = '/rangoapp/'
+LOGIN_URL = '/accounts/login'
