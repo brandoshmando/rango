@@ -99,7 +99,7 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_PATH = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = "/rangoapp/login/"
+LOGIN_URL = "/accounts/login/"
 
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7

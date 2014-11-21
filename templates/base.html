@@ -8,12 +8,12 @@
     <div>
       {% if user.is_authenticated %}
         <h1>Rango says...{{ user.username }}!</h1>
-        <a href="{% url 'logout' %}">Logout</a>|
+        <a href="{% url 'auth_logout' %}?next=/rangoapp/">Logout</a>|
         <a href="{% url 'add_category' %}">Add Category</a>|
       {% else %}
         <h1>Rango says...Hello World!</h1>
-        <a href="{% url 'login' %}">Login!</a>|
-        <a href="{% url 'register' %}"> Register </a>|
+        <a href="{% url 'auth_login' %}">Login!</a>|
+        <a href="{% url 'registration_register' %}"> Register </a>|
       {% endif %}
       <a href="{% url 'about' %}">About</a> |
       <a href="{% url 'index' %}">Home</a>
