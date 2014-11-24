@@ -1,9 +1,9 @@
 import json
 import urllib, urllib2
-from rangoapp.keys import BING_API_KEY
+import keys
 
 def run_query(search_terms):
-  root_url = https://api.datamarket.azure.com/Bing/Search/v1/Composite
+  root_url = "https://api.datamarket.azure.com/Bing/Search/v1/Composite"
 
   source = 'Web'
 
@@ -23,7 +23,7 @@ def run_query(search_terms):
   username = ''
 
   password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-  password_mgr.add_password(None, search_url, username, BING_API_KEY)
+  password_mgr.add_password(None, search_url, username, keys.BING_API_KEY )
 
   results = []
 
@@ -44,3 +44,17 @@ def run_query(search_terms):
     print 'Error when querying the Bing API:', e
 
   return results
+
+def main():
+  query_string = raw_input("Please enter a search query:")
+
+  results = run_query(query_string)
+  for result in results:
+    print"""
+    ------{0}------
+    Title: {1}
+    ---------------
+    ===============
+    """.format(result.rank, result.title)
+if __name__ =="__main__":
+  main()
