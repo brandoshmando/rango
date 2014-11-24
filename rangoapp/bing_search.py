@@ -1,7 +1,6 @@
 import json
 import urllib, urllib2
-
-BING_API_KEY = '5vrtDqJJ70Wed6/Kgy0hb162X1deQrCckZQ6GV46vZA'
+from rangoapp.keys import BING_API_KEY
 
 def run_query(search_terms):
   root_url = https://api.datamarket.azure.com/Bing/Search/v1/Composite
