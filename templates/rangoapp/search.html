@@ -1,10 +1,10 @@
-{extends 'base.html'}
+{% extends 'base.html'%}
 
-{ load staticfiles }
+{% load staticfiles $}
 
-{ block title }Search{ endblock }
+{% block title %}Search{% endblock %}
 
-{ block body_block }
+{% block body_block %}
 
   <h1>Search</h1>
   <div class="page-header">
@@ -41,5 +41,4 @@
       </div>
     </div>
   </div>
-
 {% endblock %}

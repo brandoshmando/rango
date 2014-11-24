@@ -7,6 +7,7 @@ from rangoapp.models import Category, Page, UserProfile
 from rangoapp.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from datetime import datetime
 from IPython import embed
+from rangoapp.bing_search import run_query
 
 def index(request):
   top_data = {}
@@ -143,10 +144,22 @@ def user_login(request):
       return HttpResponse("Invalid login credentials supplied...")
   else:
     return render(request, 'rangoapp/login.html', {})
+
 @login_required
 def user_logout(request):
   logout(request)
   return HttpResponseRedirect("/rangoapp/")
+
+def search(request):
+  result_list = []
+
+  if request.method == "POST":
+    query = request.POST['query'].strip()
+
+    if query:
+      result_list = run_query(query)
+
+  return render(request, 'rangoapp/search.html', { 'result_list':result_list })
 
 
 
