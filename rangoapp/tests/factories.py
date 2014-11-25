@@ -14,7 +14,7 @@ class PageFactory(factory.Factory):
   FACTORY_FOR = Page
 
   category = CategoryFactory.create()
-  title = fake.company()
+  title = faker.company()
   url = "http://www.example.com"
 
 

@@ -34,3 +34,18 @@ class CategoryTests(TestCase):
     self.assertEqual(category.slug, slugged_name)
 
 class PageTests(TestCase):
+  def test_create_page(self):
+    page = PageFactory.create()
+
+    self.assertTrue(isinstance(page, Page))
+
+  def test_default_views_eqauls_zero(self):
+    page = PageFactory.create()
+
+    self.assertEqual(page.views, 0)
+
+  def test_unicode_equals_title(self):
+    page = PageFactory.create()
+    uni = page.__unicode__()
+    title = page.title
+    self.assertEqual(title, uni)
