@@ -1,3 +1,4 @@
 *.jpg
 *.pyc
 *rangoapp/keys.py
+*htmlcov/

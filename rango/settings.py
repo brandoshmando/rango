@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'registration',
     'factory',
+    'coverage',
+    'faker',
 )
 
 MIDDLEWARE_CLASSES = (
