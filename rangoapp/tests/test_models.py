@@ -14,3 +14,8 @@ class CategoryTests(TestCase):
     category = CategoryFactory.create()
 
     self.assertEqual(category.likes, 0)
+
+  def test_create_category(self):
+    category = CategoryFactory.create()
+
+    self.assertTrue(isinstance(category, Category))
