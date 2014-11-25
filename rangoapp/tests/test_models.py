@@ -9,3 +9,8 @@ class CategoryTests(TestCase):
     category = CategoryFactory.create()
 
     self.assertEqual(category.views, 0)
+
+  def test_likes_default_zero(self):
+    category = CategoryFactory.create()
+
+    self.assertEqual(category.likes, 0)
