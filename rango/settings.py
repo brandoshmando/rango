@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'IPython',
     'django_extensions',
     'registration',
+    'factory',
 )
 
 MIDDLEWARE_CLASSES = (
