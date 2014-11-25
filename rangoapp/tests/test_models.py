@@ -19,3 +19,7 @@ class CategoryTests(TestCase):
     category = CategoryFactory.create()
 
     self.assertTrue(isinstance(category, Category))
+
+  def test_category_unicode_equals_name(self):
+    category = CategoryFactory.create()
+    self.assertEqual(category.__unicode__(), category.name)
