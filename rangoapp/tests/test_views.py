@@ -9,8 +9,12 @@ class ViewTests(TestCase):
     category = CategoryFactory.create()
     category.save()
 
+    page = PageFactory.build(category=category)
+    page.save()
+
     url = reverse("rangoapp.views.index")
     response = self.client.get(url)
 
     self.assertEqual(response.status_code, 200)
     self.assertIn(category.name, response.content)
+    self.assertIn(page.title, response.content)
