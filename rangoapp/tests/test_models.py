@@ -1,7 +1,7 @@
 import unittest
 from django.test import TestCase
-from rangoapp.models import Category
-from rangoapp.tests.factories import CategoryFactory
+from rangoapp.models import Category, Page
+from rangoapp.tests.factories import CategoryFactory, PageFactory
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
@@ -32,3 +32,5 @@ class CategoryTests(TestCase):
 
     slugged_name = slugify(category.name)
     self.assertEqual(category.slug, slugged_name)
+
+class PageTests(TestCase):

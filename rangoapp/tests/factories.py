@@ -10,3 +10,15 @@ class CategoryFactory(factory.Factory):
 
   name = faker.company()
 
+class PageFactory(factory.Factory):
+  FACTORY_FOR = Page
+
+  category = CategoryFactory.create()
+  title = fake.company()
+  url = "http://www.example.com"
+
+
+
+
+
+
